@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>    
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="styleSheet.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <title>CALCULATER</title>
+</head>
+<style>
+
+ #content{
+     text-align: center;
+     align-content: center;
+     font-size: 40px;
+     color: blue;
+     /* background-color: aliceblue; */
+ }
+ h1{
+     color:#5795ee;
+     /* font-size: 20px; */
+     background-color: white;    
+ }   
+ .center{
+     margin-top: 40px;
+     margin-left:45%;
+ }
+.bt{
+    text-align: center;
+    height: 55px;
+    width:55px;
+    align-content: center;     
+    /* background-color: transparent;     */
+    padding: 2px;        
+}
+img{
+    height: 30px;
+    width:12px;
+    text-align: center;
+    align-content: center;
+}
+</style>
+<body>
+    <div class="container-fluid" id="content">
+        <div id ="parent" class="text-center"  >
+            <h1 class="text-success  text-center">Javascript Calculater</h1>
+             <h1 id="input" class="text-primary text-center"></h1>
+
+             <div id="bt" class="center">
+                 <div id="start" class="row text-center">
+                     <button id="ce" class="bt clear">CE</button>
+                     <button id="c" class="bt clear">C</button>
+                     <button id="back" class="bt clear1"><i class='fas fa-arrow-left' style='font-size:36px'></i></button>
+                     <button id="divide" class="bt">/</button>
+                 </div>
+                 <div class="row text-center">
+                     <button id="7" class="bt">7</button>
+                     <button id="8" class="bt">8</button>
+                     <button id="9" class="bt">9</button>
+                     <button id="x" class="bt">*</button>                               
+                 </div>
+                 <div class="row text-center">
+                        <button id="4" class="bt">4</button>
+                        <button id="5" class="bt">5</button>
+                        <button id="6" class="bt">6</button>
+                        <button id="minus" class="bt">-</button>                               
+                 </div>
+                 <div class="row text-center">
+                        <button id="3" class="bt">3</button>
+                        <button id="2" class="bt">2</button>
+                        <button id="1" class="bt">1</button>
+                        <button id="plus" class="bt">+</button>                               
+                </div>
+                <div class="row text-center">
+                        <button id="pm" class="bt"><i class='far fa-laugh-beam'></i></button>
+                        <button id="0" class="bt">0</button>
+                        <button id="decimal" class="bt">.</button>
+                        <button id="equal" class="bt">=</button>                               
+               </div>
+             </div>
+
+        </div>
+    </div>    
+
+    <script>
+     var result=[];
+     var d,e,f;
+
+     $('.clear').on('click',function(){
+         result.splice(0);
+         $('#input').empty();
+     });
+     $('.clear1').on('click',function(){
+         result.length--;
+         $("#input").html(result);
+     });
+
+     $('#1').on('click',function(){
+         result.push(1);
+         $('#input').html(result);
+     });
+     $('#2').on('click',function(){
+         result.push(2);
+         $('#input').html(result);
+     });
+     $('#3').on('click',function(){
+         result.push(3);
+         $('#input').html(result);
+     });
+     $('#4').on('click',function(){
+         result.push(4);
+         $('#input').html(result);
+     });
+     $('#5').on('click',function(){
+         result.push(5);
+         $('#input').html(result);
+     });
+     $('#6').on('click',function(){
+         result.push(6);
+         $('#input').html(result);
+     });
+     $('#7').on('click',function(){
+         result.push(7);
+         $('#input').html(result);
+     });
+     $('#8').on('click',function(){
+         result.push(8);
+         $('#input').html(result);
+     });
+     $('#9').on('click',function(){
+         result.push(9);
+         $('#input').html(result);
+     });
+     $('#0').on('click',function(){
+         result.push(0);
+         $('#input').html(result);
+     });
+     $('#decimal').on('click',function(){
+         result.push(".");
+         $('#input').html(result);
+     });
+     $('#plus').on('click',function(){
+         result.push('+');
+         $('#input').html(result);
+     });
+     $('#minus').on('click',function(){
+         result.push("-");
+         $('#input').html(result);
+     });
+     $('#divide').on('click',function(){
+         result.push("/");
+         $('#input').html(result);
+     });
+     $('#x').on('click',function(){
+         result.push("*");
+         $('#input').html(result);
+     });
+
+     $('#equal').on('click',function(){
+         result.forEach(function(element,index,array){
+             if(isNaN(parseInt(element)) && element!="." && index!=result.length-1){
+                 d=result.splice(0,index).join("");
+                 e=result.splice(1).join("");
+
+                 if(element=="+"){
+                     f = parseInt(d)+parseInt(e);
+                 }
+                 if(element=="-"){
+                     f = parseInt(d)-parseInt(e);
+                 }
+                 if(element=="*"){
+                     f = parseInt(d)*parseInt(e);
+                 }
+                 if(element=="/"){
+                     f = parseInt(d)/parseInt(e);
+                 }
+                 $('#input').html(f);
+                 result.splice(0);
+             }
+         });
+     });
+
+     
+    </script>
+</body>
+
+</html>
