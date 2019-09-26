@@ -1,0 +1,109 @@
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-headr">
+        <a class="navbar-brand" >Person Information</a>
+      </div>      
+    </div>
+  </nav>
+
+
+  <div class="container-fluid">               
+    <button type="button" data-target="#addPerson" class="btn btn-info " data-toggle="modal">Add Person</button>
+      <div class="modal fade" id="addPerson" role="dialog">
+      <div class="modal-dialog">          
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Person Details</h4>
+          </div>
+          <div class="modal-body">
+            <form #m1="ngForm">
+                      <div class="form-group">
+                            <label for="Name">Enter Name</label>
+                            <input type="text" class="form-control" name="p.Name" [(ngModel)]="p.Name" placeholder="Enter Name">                     
+                    </div>  
+                    <div class="form-group">
+                            <label for="Age">Enter Age</label>
+                            <input type="text" class="form-control"  name="p.Age" [(ngModel)]="p.Age"  placeholder="Enter Age">                     
+                    </div> 
+                    <div> <p>Please select your gender:</p>
+                      <input type="radio" name="gender" [(ngModel)]="p.Gender" value="male"> Male<br>
+                      <input type="radio" name="gender" [(ngModel)]="p.Gender" value="female"> Female<br>
+                     <br>  </div>
+                    <div class="form-group">
+                            <label for="Name">Enter PhoneNumber</label>
+                            <input type="text" class="form-control" name="p.PhoneNumber" [(ngModel)]="p.PhoneNumber"  placeholder="Enter PhoneNumber">                     
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="Submit()">Submit</button>
+                          </div>                   
+              </form>
+          </div>         
+        </div>            
+      </div>
+    </div>       
+</div>
+
+  <!-- show Information of user -->
+  <div class="table-responsive container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Salary</th>
+          <th>Gender</th>
+          <th>Age</th>
+        </tr>        
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of Person; let i=index" >
+          <td >{{p.Name}}</td>
+          <td>{{p.Age}}</td>
+          <td>{{p.Gender}}</td>
+          <td>{{p.PhoneNumber}}</td>
+          <td ><button type="button" data-target="#editPerson" class="btn btn-success btn-sm" 
+            data-toggle="modal" (click)=Edit(p)>Edit</button>&nbsp;
+          <button class="btn btn-danger btn-sm "  (click)="Delete(p._id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr>
+
+  <!-- edit a person -->
+  <div class="modal fade" id="editPerson" role="dialog">
+      <div class="modal-dialog">          
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Person Details</h4>
+          </div>
+          <div class="modal-body">
+            <form #m2="ngForm">
+                      <div class="form-group">
+                            <label for="Name">Enter Name</label>
+                            <input type="text" class="form-control" name="s.Name" [(ngModel)]="s.Name" placeholder="Enter Name">                     
+                    </div>  
+                    <div class="form-group">
+                            <label for="Age">Enter Age</label>
+                            <input type="text" class="form-control"  name="s.Age" [(ngModel)]="s.Age"  placeholder="Enter Age">                     
+                    </div> 
+                    <div> <p>Please select your gender:</p>
+                      <input type="radio" name="gender" [(ngModel)]="s.Gender" value="male"> Male<br>
+                      <input type="radio" name="gender" [(ngModel)]="s.Gender" value="female"> Female<br>
+                     <br>  </div>
+                    <div class="form-group">
+                            <label for="Name">Enter PhoneNumber</label>
+                            <input type="text" class="form-control" name="s.PhoneNumber" [(ngModel)]="s.PhoneNumber"  placeholder="Enter PhoneNumber">                     
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="update(s)">Submit</button>
+                          </div>                   
+              </form>
+          </div>         
+        </div>            
+      </div>
+    </div>  
+  
+  
